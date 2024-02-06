@@ -5,7 +5,9 @@ import { api } from "~/utils/api";
 import styles from "./index.module.css";
 
 export default function Home() {
-  const hello = api.post.hello.useQuery({ text: "from tRPC" });
+  const challenges = api.challenge.getAll.useQuery();
+
+  console.log(challenges.data);
 
   return (
     <>
@@ -43,9 +45,7 @@ export default function Home() {
               </div>
             </Link>
           </div>
-          <p className={styles.showcaseText}>
-            {hello.data ? hello.data.greeting : "Loading tRPC query..."}
-          </p>
+          <p className={styles.showcaseText}></p>
         </div>
       </main>
     </>
